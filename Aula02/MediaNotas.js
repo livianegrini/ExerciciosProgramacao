@@ -1,39 +1,50 @@
 // Adicionando notas
-var nota1 = 4;
-var nota2 = 8;
-var nota3 = 9;
+var notas = [4, 8, 9];
+
+// Soma das notas
+var soma = 0;
+
+// Indice inicial para o loop
+var i = 0;
+
+while (i < notas.length) {
+    soma += notas[i]; // Adiciona a nota atual à soma
+    i++; // Incrementa o índice 
+}
 
 // Calculando média
-var media = (nota1 + nota2 + nota3) / 3;
+var media = soma / notas.length;
 
-// if (media >= 7.0) {
-//     console.log("Nota 1: " + nota1);
-//     console.log("Nota 2: " + nota2);
-//     console.log("Nota 3: " + nota3);
-//     console.log("Média final " + media.toFixed(2));
-//     console.log("APROVADO.");
-// } else {
-//     console.log("Nota 1: " + nota1);
-//     console.log("Nota 2: " + nota2);
-//     console.log("Nota 3: " + nota3);
-//     console.log("Média final " + media.toFixed(2));
-//     console.log("REPROVADO.");
-// }
-
-while (media >= 7.0) {
-    console.log("Nota 1: " + nota1);
-    console.log("Nota 2: " + nota2);
-    console.log("Nota 3: " + nota3);
+if (media >= 7.0) {
+    console.log("Nota 1: " + notas[0]);
+    console.log("Nota 2: " + notas[1]);
+    console.log("Nota 3: " + notas[2]);
     console.log("Média final: " + media.toFixed(2));
     console.log("APROVADO.");
-    break;
-}
-
-while (media < 7.0) {
-    console.log("Nota 1: " + nota1);
-    console.log("Nota 2: " + nota2);
-    console.log("Nota 3: " + nota3);
+} else {
+    console.log("Nota 1: " + notas[0]);
+    console.log("Nota 2: " + notas[1]);
+    console.log("Nota 3: " + notas[2]);
     console.log("Média final: " + media.toFixed(2));
     console.log("REPROVADO.");
-    break;
 }
+
+
+// Pensamento antigo.
+// while (media >= 7.0) {
+//     console.log("Nota 1: " + nota1);
+//     console.log("Nota 2: " + nota2);
+//     console.log("Nota 3: " + nota3);
+//     console.log("Média final: " + media.toFixed(2));
+//     console.log("APROVADO.");
+//     break;
+// }
+
+// while (media < 7.0) {
+//     console.log("Nota 1: " + nota1);
+//     console.log("Nota 2: " + nota2);
+//     console.log("Nota 3: " + nota3);
+//     console.log("Média final: " + media.toFixed(2));
+//     console.log("REPROVADO.");
+//     break;
+// }
