@@ -1,5 +1,5 @@
 // Adicionando notas
-var notas = [4, 8, 9];
+var notas = [2, 8, 9];
 
 // Soma das notas
 var soma = 0;
