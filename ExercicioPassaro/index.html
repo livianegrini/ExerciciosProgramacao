@@ -21,30 +21,30 @@
 
     <script>
 
+        // Definindo configurações 
         var config = {
             type: Phaser.AUTO,
             width: 800,
             height: 600,
 
             scene: {
-                preload: preload,
-                create: create,
-                update: update
+                preload: preload, // Define o nome da função 
+                create: create, // Define o nome da função 
+                update: update // Define o nome da função 
             }
         };
 
         var game = new Phaser.Game(config); // Inicializa um novo jogo 
 
-        var passarinho; // Variável para armazenar o objeto do pássaro
+        var passarinho; // Variável para armazenar o pássaro
 
         // Função para carregar os recursos do jogo
         function preload() {
-            this.load.image('bg', 'assets/bg_space.png');
-            this.load.spritesheet('bird', 'assets/bird-purple.png', { frameWidth: 75, frameHeight: 75 });
-
+            this.load.image('bg', 'assets/bg_space.png'); // Carrega a image de fundo
+            this.load.spritesheet('bird', 'assets/bird-purple.png', { frameWidth: 75, frameHeight: 75 }); // Carrega o pássaro
         }
 
-        // Função para criação dos objetos no jogo
+        // Função para criação dos objetos 
         function create() {
             // Adiciona a imagem de fundo
             this.add.image(400, 300, 'bg').setScale(1.2);
@@ -54,7 +54,7 @@
 
             // Cria a animação do pássaro 
             this.anims.create({
-                key: 'fly', // Nome da chave
+                key: 'fly', // Nome da animação
                 frames: this.anims.generateFrameNumbers('bird', { start: 0, end: 7 }), // Seleciona os quadros da animação
                 frameRate: 10, // Taxa de quadros por segundo
                 repeat: -1  // Faz a animação ficar em loop infinito
@@ -62,51 +62,61 @@
 
             // Inicia a animação
             passarinho.anims.play('fly', true);
+
+            // Configura as variáveis de movimentação do eixo x e y 
+            passarinho.ida = true;
+            passarinho.idaY = true;
         }
 
         // Função de atualização
         function update() {
 
             // Movimentação na direção horizontal
-            if (passarinho.x === 100) {
+            while (passarinho.x === 100) {
                 passarinho.setFlip(false, false); // Gira o pássaro para a frente
                 passarinho.ida = true;  // Define que o pássaro está indo para a direita
+                break;
             }
 
-            if (passarinho.x < 700 && passarinho.ida === true) {
-                console.log("o que acontece?"); // Console log para depuração
-                passarinho.x += 5; // Move o pássaro para a direita (x aumenta)
+            while (passarinho.x < 700 && passarinho.ida === true) {
+                console.log("Pássaro vai para a direita de 5 em 5px"); 
+                passarinho.x += 5; // Move o pássaro para a direita (x aumenta de 5 em 5)
+                break;
             }
 
-            if (passarinho.x === 700) {
+            while (passarinho.x === 700) {
                 passarinho.setFlip(true, false); // Vira o pássaro para a esquerda
-                passarinho.ida = false; // Define que o pássaro está indo para a esquerda
+                passarinho.ida = false; // Define que o pássaro está voltando
+                break;
             }
 
-            if (passarinho.x > 100 && passarinho.ida === false) {
-                console.log("e o que acontece agora?");
-                passarinho.x -= 5; // Move o pássaro para a esquerda (x diminui)
+            while (passarinho.x > 100 && passarinho.ida === false) {
+                console.log("Pássaro está indo para a esquerda de 5 em 5px");
+                passarinho.x -= 5; // Move o pássaro para a esquerda (x diminui de 5 em 5)
+                break;
             }
 
             // Movimentação na direção vertical
-            if (passarinho.y === 100) { 
-                passarinho.setFlip(false, false); // Gira o pássaro para a frente
-                passarinho.ida = true; // Define que o pássaro está indo para baixo
+            while (passarinho.y <= 100) {
+                passarinho.idaY = true; // Define que o pássaro está indo para baixo
+                break;
             }
 
-            if (passarinho.y < 500 && passarinho.ida === true) {
-                console.log("o que acontece?");
-                passarinho.y += 8;  // Move o pássaro para baixo (y aumenta)
+            while (passarinho.y < 500 && passarinho.idaY === true) {
+                console.log("P pássaro está descendo de 8 em 8px");
+                passarinho.y += 8; // Move o pássaro para baixo (y aumenta de 8 em 8)
+                break;
             }
 
-            if (passarinho.y === 800) {
-                passarinho.setFlip(true, false); // Vira o pássaro para cima
-                passarinho.ida = false; // Define que o pássaro está indo para cima
+            while (passarinho.y >= 500) {
+                passarinho.idaY = false; // Define que o pássaro chegou no limite
+                break;
             }
 
-            if (passarinho.y > 70 && passarinho.ida === false) {
-                console.log("e o que acontece agora?");
-                passarinho.y -= 3; // Move o pássaro para cima (y diminui)
+            while (passarinho.y > 100 && passarinho.idaY === false) {
+                console.log("O pássaro está subindo de 3 em 3 px");
+                passarinho.y -= 3; // Move o pássaro para cima (y diminui de 3 em 3)
+                break;
             }
         }
 
