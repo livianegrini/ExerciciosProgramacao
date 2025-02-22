@@ -19,11 +19,11 @@
 
 <body>
     <script>
-        // o que acontece aqui?
+        // Define as dimensões do jogo
         const larguraJogo = 700;
         const alturaJogo = 850;
 
-        // o que essa parte faz?
+        // Configura o Phaser
         const config = {
             type: Phaser.AUTO,
             width: larguraJogo,
@@ -45,9 +45,10 @@
             }
         };
 
-        // o que acontece aqui?
+        // Cria uma instância do jogo
         const game = new Phaser.Game(config);
 
+        // Declara variáveis globais
         var alien;
         var teclado;
         var fogo;
@@ -83,7 +84,7 @@
         }
 
         function create() {
-            // o que acontece aqui?
+            // Adiciona a imagem de fundo ao jogo
             this.add.image(larguraJogo / 2, alturaJogo / 2, 'background');
 
             // Cria o fogo
@@ -94,9 +95,10 @@
             alien = this.physics.add.sprite(larguraJogo / 2, 0, 'player');
             alien.setCollideWorldBounds(true);
 
+            // Captura as teclas do teclado para controle do personagem
             teclado = this.input.keyboard.createCursorKeys();
 
-            // Cria a plataforma de tijolo na tela
+            // Cria as plataformas de tijolo na tela
             plataforma.push(this.physics.add.staticImage(larguraJogo / 2, alturaJogo / 2, 'plataforma_tijolo'));
             plataforma.push(this.physics.add.staticImage(550, 300, 'plataforma_tijolo'));
             // Estabelece uma colisão entre o alien e a plataforma
@@ -107,7 +109,7 @@
             aviao = this.physics.add.staticImage(150, 200, 'aviao');
             aviao.setScale(0.4);
             aviao.body.setSize(280, 125);
-            aviao.setOffset(80,70);
+            aviao.setOffset(80, 70);
             // Estabelece uma colisão entre o alien e o aviao
             this.physics.add.collider(alien, aviao);
 
@@ -193,10 +195,12 @@
             }
         }
 
+        // Função para ativar turbo
         function ativarTurbo() {
             fogo.setVisible(true);
         }
 
+        // Função para desativar turbo
         function semTurbo() {
             fogo.setVisible(false);
         }
