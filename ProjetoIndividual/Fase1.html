@@ -32,7 +32,7 @@
             default: 'arcade',//
             arcade: {
                 gravity: { y: 300 },
-                debug: true
+                // debug: true
             }
         },
         scene: {
@@ -52,6 +52,7 @@
     var pontuacao = 0;
     var placar;
     var teste;
+    var poeira;
 
     function preload() {
         // Carregando imagem de fundo
@@ -61,12 +62,20 @@
         // Carregando imagem da moeda
         this.load.image('moeda', 'assets/moeda.png');
         // Carregando imagem do personagem
-        this.load.image('personagem', 'assets/personagem2.png');
+        this.load.spritesheet('personagem', 'assets/personagem.png', { frameWidth: 100, frameHeight: 185 });
+
+        // Carregando imagem da poeira
+        this.load.image('poeira', 'assets/poeira.png');
     }
 
     function create() {
         // Adicionando imagem de fundo
         this.add.image(400, 300, 'fundo');
+
+
+        // Adicionando imagem da poeira
+        poeira = this.add.sprite(0, 0, 'poeira');
+        poeira.setVisible(false);
 
         // Adicionando 3 imagens de plataformas na lista de plataformas
         plataforma.push(this.physics.add.staticImage(150, 300, 'plataforma').setScale(0.5));
@@ -89,7 +98,7 @@
         this.physics.add.collider(moeda, plataforma);
 
         personagem = this.physics.add.sprite(100, 300, 'personagem').setScale(0.5);
-        personagem.setBounce(0.7);
+        // personagem.setBounce(0.7);
 
         // Adicionando texto placar 
         placar = this.add.text(50, 50, 'Moedas:' + pontuacao, { fontSize: '35px', fill: '#FFD700' });
@@ -115,26 +124,79 @@
 
             moeda.setVisible(true); // Ativa a visão da "nova moeda"
         });
+
+        this.anims.create({
+            key: "andar",
+            frames: this.anims.generateFrameNumbers("personagem", { start: 0, end: 5 }),
+            frameRate: 10,
+            repeat: -1,
+        });
+
+        this.anims.create({
+            key: "parar",
+            frames: this.anims.generateFrameNumbers("personagem", { start: 5, end: 5 }),
+            frameRate: 10,
+            repeat: -1,
+        });
+
+        this.anims.create({
+            key: "voltar",
+            frames: this.anims.generateFrameNumbers("personagem", { start: 0, end: 5 }),
+            frameRate: 10,
+            repeat: -1,
+        });
+
+        this.anims.create({
+            key: "pular",
+            frames: this.anims.generateFrameNumbers("personagem", { start: 6, end: 11 }),
+            frameRate: 10,
+            repeat: -1,
+        });
     }
 
     function update() {
         // Movimenta para a esquerda
         if (teclado.left.isDown) {
+            personagem.setFlipX(true);
             personagem.setVelocityX(-150);
-            // Movimenta para a direita
+            personagem.anims.play('voltar', true);
+            // Movimenta para a esquerda
         } else if (teclado.right.isDown) {
+            personagem.setFlipX(false);
             personagem.setVelocityX(150);
-            // Sem movimento horizontal
+            personagem.anims.play('andar', true);
+            // Movimenta para a direita
         } else {
             personagem.setVelocityX(0);
+            personagem.anims.play('parar', true);
+            // MFaz ele ficar parado
         }
 
         // Movimento para cima
         if (teclado.up.isDown) {
-            // verificar se o  personagem esta tocando o chao antes de pular
+            // verificar se alien esta tocando o chao antes de pular
+
             personagem.setVelocityY(-150);
+            ativarTurbo();
+            personagem.anims.play('pular', true);
+        }
+        // Movimento para baixo
+        else {
+            semTurbo();
+            // Atualiza a posição do "foguinho" em relação ao alien
+            poeira.setPosition(personagem.x, personagem.y + personagem.height / 2);
         }
 
+    }
+
+    // Função para ativar turbo
+    function ativarTurbo() {
+        poeira.setVisible(true);
+    }
+
+    // Função para desativar turbo
+    function semTurbo() {
+        poeira.setVisible(false);
     }
 
 </script>
