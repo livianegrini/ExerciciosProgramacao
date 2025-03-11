@@ -4,7 +4,7 @@ class Fase2 extends Phaser.Scene {
             key: 'Fase2',
             physics: {
                 arcade: {
-                    debug: true,
+                    debug: false,
                     gravity: { y: 350 }
                 }
             }
@@ -206,6 +206,7 @@ class Fase2 extends Phaser.Scene {
 
             // Aguarda 2 segundos (2000 milissegundos) antes de mudar para a cena inicial
             this.time.delayedCall(2000, () => {
+                this.scene.stop("Fase2");
                 this.scene.start("CenaInicial");
             }, [], this);
         }

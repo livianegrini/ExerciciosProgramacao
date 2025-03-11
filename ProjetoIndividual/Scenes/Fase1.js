@@ -124,13 +124,10 @@ class Fase1 extends Phaser.Scene {
             this.personagem.setFlipX(true);
             this.personagem.setVelocityX(-150);
             this.personagem.anims.play('voltar', true);
-            this.ativarTurbo();
             console.log("Tecla esquerda pressionada");
         } else if (this.teclado.right.isDown) {
             this.personagem.setFlipX(false);
             this.personagem.setVelocityX(150);
-            this.personagem.anims.play('andar', true);
-            this.ativarTurbo();
             console.log("Tecla direita pressionada");
             // Movimenta para a direita
         } else {
@@ -160,6 +157,7 @@ class Fase1 extends Phaser.Scene {
 
             // Aguarda 2 segundos (2000 milissegundos) antes de mudar para a cena inicial
             this.time.delayedCall(2000, () => {
+                this.scene.stop("Fase1");
                 this.scene.start("Fase2");
             }, [], this);
         }
