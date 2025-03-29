@@ -242,11 +242,11 @@ Implemente um pseudocódigo que receba o valor total da compra e exiba a classif
 valor -> 0
 
 Se valor for menor que 50 então
-    imprima "Frete não disponível!"
+Imprima "Frete não disponível!"
 Senão, se valor se for maior ou igual a 50 e menor ou igual a 199.99 então
-    Imprima "Frete com custo adicional!"
+Imprima "Frete com custo adicional!"
 Senão
-    Imprima "Frete grátis!
+Imprima "Frete grátis!
 Fim
 ______
 
@@ -265,6 +265,37 @@ Método CalcularConsumo():
 ```
 Implementação genérica para cálculo de consumo, a ser sobrescrita pelas subclasses.
 Agora, implemente as classes Carro e Moto, garantindo que ambas herdem de Veiculo e possuam métodos específicos para calcular o consumo de combustível com base na quilometragem e eficiência do veículo.
+
+Classe Carro herda de Veiculo:
+
+Atributos:
+quilometragem
+eficienciaCarro
+
+Método Construtor(modelo, ano, quilometragem, eficienciaCarro):
+    Chamar o construtor da classe Veiculo(modelo, ano)
+    Definir quilometragem = quilometragem
+    Definir eficienciaCarro = eficienciaCarro
+
+Método CalcularConsumo():
+    consumo = quilometragem / eficienciaCarro
+    Retornar "Consumo do Carro: " + consumo
+
+Classe Moto herda de Veiculo:
+
+Atributos:
+
+quilometragem
+eficienciaMoto
+
+Método Construtor(modelo, ano, quilometragem, eficienciaMoto):
+    Chamar o construtor da classe Veiculo(modelo, ano)
+    Definir quilometragem = quilometragem
+    Definir eficienciaMoto = eficienciaMoto
+
+Método CalcularConsumo():
+    consumo = quilometragem / eficienciaMoto
+    Retornar "Consumo da Moto: " + consumo
 ______
 
 **9)** Você é um cientista da NASA e está ajudando no desenvolvimento de um sistema de pouso para sondas espaciais em Marte. Seu objetivo é calcular o tempo necessário para que a sonda reduza sua velocidade até um nível seguro para pouso, considerando uma velocidade inicial de entrada na atmosfera marciana e uma taxa de desaceleração constante causada pelo atrito atmosférico e retrofoguetes.
@@ -273,11 +304,45 @@ Entretanto, a sonda não pode ultrapassar um tempo máximo de descida para evita
 
 Implemente a lógica dessa simulação em pseudocódigo, considerando a seguinte equação para atualização da velocidade:
 
-Considere a fórumla de atualização velocidade:
+Considere a fórmula de atualização velocidade:
 ```
     velocidade = velocidadeInicial - desaceleracao * tempo
 ```
 Seu programa deve determinar quanto tempo será necessário para que a sonda atinja uma velocidade segura de pouso, sem ultrapassar os limites estabelecidos.
+
+
+Início
+  
+    velocidadeInicial = valorInicialVelocidade 
+    desaceleracao = valorDesaceleracao 
+    velocidadeSegura = valorVelocidadeSegura 
+    tempoMaximo = valorTempoMaximo 
+    tempoMinimo = valorTempoMinimo 
+
+    tempo = 0
+    velocidade = velocidadeInicial
+
+    Enquanto velocidade maior que velocidadeSegura E tempo menor que tempoMaximo:
+        tempo = tempo + 1 
+        velocidade = velocidadeInicial - desaceleracao * tempo 
+
+        Se velocidade menor que velocidadeSegura então
+            Imprimir "Velocidade segura atingida em " + tempo + " segundos"
+            Parar
+        FimSe
+
+        Se tempo maior que tempoMaximo então
+            Imprimir "Tempo máximo de descida ultrapassado. Pouso não seguro."
+            Parar
+        FimSe
+
+        Se desaceleracao * tempo menor que tempoMinimo então
+            Imprimir "Desaceleração insuficiente. Ajuste necessário para evitar instabilidade."
+            Parar
+        FimSe
+    FimEnquanto
+Fim
+
 ______
 
 **10)** Em um sistema de análise financeira, as operações de investimento de uma empresa podem ser representadas por matrizes, onde cada linha representa um tipo de investimento e cada coluna representa um período de tempo.
@@ -310,3 +375,35 @@ Escrever("Total de investimentos acumulados:")
 ImprimirMatriz(totalInvestimentos)  
 ```
 Agora, implemente a função MultiplicarMatrizesInvestimento(matrizA, matrizB), que multiplica as duas matrizes, simulando o efeito de diferentes fatores de crescimento e impacto financeiro nos investimentos ao longo do tempo.
+
+??
+Função MultiplicarMatrizesInvestimento(matrizA, matrizB):
+    # Verifica se o número de colunas de matrizA é igual ao número de linhas de matrizB
+    Se tamanho(matrizA[0]) ≠ tamanho(matrizB) então:
+        Retornar "As matrizes não podem ser multiplicadas. O número de colunas da matriz A deve ser igual ao número de linhas da matriz B."
+    Senão:
+        linhasA <- tamanho(matrizA)
+        colunasA <- tamanho(matrizA[0])
+        colunasB <- tamanho(matrizB[0])
+
+        # Cria a matriz resultado com as dimensões adequadas
+        matrizResultado <- novaMatriz(linhasA, colunasB)
+
+        # Loop para percorrer cada elemento da matriz resultado
+        Para i de 0 até linhasA-1 faça:
+            Para j de 0 até colunasB-1 faça:
+                soma <- 0
+                Para k de 0 até colunasA-1 faça:
+                    soma <- soma + matrizA[i][k] * matrizB[k][j]
+                FimPara
+                matrizResultado[i][j] <- soma
+
+        Retornar matrizResultado
+        
+investimentosAno1 <- [[1000, 2000], [1500, 2500]]
+fatoresCrescimento <- [[1.1, 0.9], [1.05, 1.2]]
+
+impactoInvestimentos <- MultiplicarMatrizesInvestimento(investimentosAno1, fatoresCrescimento)
+Escrever("Impacto dos investimentos ao longo do tempo:")
+ImprimirMatriz(impactoInvestimentos)
+
