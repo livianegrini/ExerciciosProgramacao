@@ -239,15 +239,18 @@ Pedidos de R$200,00 ou mais → "Frete grátis!"
 ```
 Implemente um pseudocódigo que receba o valor total da compra e exiba a classificação correta do frete para o cliente.
 
+```
 valor -> 0
 
 Se valor for menor que 50 então
-Imprima "Frete não disponível!"
-Senão, se valor se for maior ou igual a 50 e menor ou igual a 199.99 então
-Imprima "Frete com custo adicional!"
+    Imprima "Frete não disponível!"
+Senão, se valor se for maior ou igual a 50 e menor ou igual a 199.99 
+Então
+    Imprima "Frete com custo adicional!"
 Senão
-Imprima "Frete grátis!
+    Imprima "Frete grátis!
 Fim
+```
 ______
 
 **8)** Considere a implementação da classe base Veiculo em um sistema de modelagem de veículos. Sua tarefa é implementar, utilizando pseudocódigo, as classes derivadas Carro e Moto, que herdam da classe Veiculo, adicionando atributos específicos e métodos para calcular o consumo de combustível de um carro e de uma moto, respectivamente.
@@ -266,6 +269,7 @@ Método CalcularConsumo():
 Implementação genérica para cálculo de consumo, a ser sobrescrita pelas subclasses.
 Agora, implemente as classes Carro e Moto, garantindo que ambas herdem de Veiculo e possuam métodos específicos para calcular o consumo de combustível com base na quilometragem e eficiência do veículo.
 
+```
 Classe Carro herda de Veiculo:
 
 Atributos:
@@ -297,6 +301,7 @@ Método CalcularConsumo():
     consumo = quilometragem / eficienciaMoto
     Retornar "Consumo da Moto: " + consumo
 ______
+```
 
 **9)** Você é um cientista da NASA e está ajudando no desenvolvimento de um sistema de pouso para sondas espaciais em Marte. Seu objetivo é calcular o tempo necessário para que a sonda reduza sua velocidade até um nível seguro para pouso, considerando uma velocidade inicial de entrada na atmosfera marciana e uma taxa de desaceleração constante causada pelo atrito atmosférico e retrofoguetes.
 
@@ -310,7 +315,7 @@ Considere a fórmula de atualização velocidade:
 ```
 Seu programa deve determinar quanto tempo será necessário para que a sonda atinja uma velocidade segura de pouso, sem ultrapassar os limites estabelecidos.
 
-
+```
 Início
   
     velocidadeInicial = valorInicialVelocidade 
@@ -342,6 +347,7 @@ Início
         FimSe
     FimEnquanto
 Fim
+```
 
 ______
 
@@ -351,45 +357,32 @@ A seguir, é fornecida a implementação da função SomarMatrizesInvestimento(m
 
 ```
 Função SomarMatrizesInvestimento(matrizA, matrizB):  
-    # Verifica se as matrizes têm o mesmo número de linhas e colunas  
-    Se tamanho(matrizA) ≠ tamanho(matrizB) então:  
+    Se tamanho(matrizA) diferente do tamanho(matrizB) então:  
         Retornar "As matrizes não podem ser somadas. Elas têm dimensões diferentes."  
     Senão:  
         linhas <- tamanho(matrizA)  
         colunas <- tamanho(matrizA[0])  
         matrizResultado <- novaMatriz(linhas, colunas)  
 
-        # Loop para percorrer cada elemento das matrizes e calcular a soma  
         Para i de 0 até linhas-1 faça:  
             Para j de 0 até colunas-1 faça:  
                 matrizResultado[i][j] <- matrizA[i][j] + matrizB[i][j]  
 
         Retornar matrizResultado  
-
-# Exemplo de uso da função  
-investimentosAno1 <- [[1000, 2000], [1500, 2500]]  
-investimentosAno2 <- [[1200, 1800], [1300, 2700]]  
-
-totalInvestimentos <- SomarMatrizesInvestimento(investimentosAno1, investimentosAno2)  
-Escrever("Total de investimentos acumulados:")  
-ImprimirMatriz(totalInvestimentos)  
 ```
 Agora, implemente a função MultiplicarMatrizesInvestimento(matrizA, matrizB), que multiplica as duas matrizes, simulando o efeito de diferentes fatores de crescimento e impacto financeiro nos investimentos ao longo do tempo.
 
-??
+```
 Função MultiplicarMatrizesInvestimento(matrizA, matrizB):
-    # Verifica se o número de colunas de matrizA é igual ao número de linhas de matrizB
-    Se tamanho(matrizA[0]) ≠ tamanho(matrizB) então:
+    Se tamanho(matrizA[0]) != tamanho(matrizB) então:
         Retornar "As matrizes não podem ser multiplicadas. O número de colunas da matriz A deve ser igual ao número de linhas da matriz B."
     Senão:
         linhasA <- tamanho(matrizA)
         colunasA <- tamanho(matrizA[0])
         colunasB <- tamanho(matrizB[0])
 
-        # Cria a matriz resultado com as dimensões adequadas
         matrizResultado <- novaMatriz(linhasA, colunasB)
 
-        # Loop para percorrer cada elemento da matriz resultado
         Para i de 0 até linhasA-1 faça:
             Para j de 0 até colunasB-1 faça:
                 soma <- 0
@@ -403,7 +396,9 @@ Função MultiplicarMatrizesInvestimento(matrizA, matrizB):
 investimentosAno1 <- [[1000, 2000], [1500, 2500]]
 fatoresCrescimento <- [[1.1, 0.9], [1.05, 1.2]]
 
-impactoInvestimentos <- MultiplicarMatrizesInvestimento(investimentosAno1, fatoresCrescimento)
+impactoInvestimentos <- MultiplicarMatrizesInvestimento(investimentosAno1 fatoresCrescimento)
+
 Escrever("Impacto dos investimentos ao longo do tempo:")
 ImprimirMatriz(impactoInvestimentos)
 
+```
