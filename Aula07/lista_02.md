@@ -372,10 +372,7 @@ Função SomarMatrizesInvestimento(matrizA, matrizB):
 ```
 Agora, implemente a função MultiplicarMatrizesInvestimento(matrizA, matrizB), que multiplica as duas matrizes, simulando o efeito de diferentes fatores de crescimento e impacto financeiro nos investimentos ao longo do tempo.
 
-<<<<<<< HEAD
 ```
-=======
->>>>>>> e772918e4348bd63804bfb5e9f6384d8b9372204
 Função MultiplicarMatrizesInvestimento(matrizA, matrizB):
     Se tamanho(matrizA[0]) != tamanho(matrizB) então:
         Retornar "As matrizes não podem ser multiplicadas. O número de colunas da matriz A deve ser igual ao número de linhas da matriz B."
