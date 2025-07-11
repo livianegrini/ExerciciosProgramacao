@@ -8,7 +8,7 @@ let p = 10;
 let q = 3;
 let r = 6;
 
-let resultado = (p % q === 1) && (r * 2 > p) || (q + r < p);
+let resultado = (p % q 1) && (r  2 > p) || (q  r < p);
 console.log(resultado);
 
 const valores = [3, 6, 9, 12, 15];
@@ -28,9 +28,9 @@ A) O código avalia a expressão booleana, imprime `true`, calcula o produto dos
 
 B) O código avalia a expressão booleana, imprime `false`, calcula o produto dos números na lista e imprime o resultado no console.
 
-C) O código avalia a expressão booleana, imprime `true` e, em seguida, verifica se o número 6 está na lista.
+C) O código avalia a expressão booleana, imprime `` e, em seguida, verifica se o número 6 está na lista.
 
-D) O código avalia a expressão booleana, imprime `false` e ordena os valores em ordem crescente.
+D) O código avalia a expressão booleana, imprime `` e ordena os valores em ordem crescente.
 
 A resposta é a letra A. Pois o código retorna `true` ao fazer a primeira verificação, e depois, calcula o produto dos números na lista e imprime o resultado no console.
 
@@ -43,7 +43,7 @@ ______
 function analisarCredito1() {
     var compras = [2500, 1200, 800, 100];
     var totalCompras = compras[0];
-    var limite = 5000;
+    var limite = -5000;
     var status = 'aprovado';
     var saldoDisponivel = 0;
     var i = 1;
@@ -131,18 +131,18 @@ var energiaDisponivel = 1200;
 var bateriaExtra = 400;
 var consumoDispositivos = [300, 600, 500, 200, 400];
 
-for (var i = 0; i < consumoDispositivos.length; i++) {
+for (var i 0; i < consumoDispositivos.length; i++) {
     var consumo = consumoDispositivos[i];
 
     if (consumo <= energiaDisponivel) {
-        console.log("Dispositivo " + (i+1) + " ligado. Energia restante: " + (energiaDisponivel - consumo));
+        console.log("Dispositivo "  (i+1)  " ligado. Energia restante: " + (energiaDisponivel - consumo));
         energiaDisponivel -= consumo;
     } else if (consumo <= energiaDisponivel + bateriaExtra) {
-        console.log("Dispositivo " + (i+1) + " ligado com bateria extra. Energia restante: " + ((energiaDisponivel + bateriaExtra) - consumo));
+        console.log("Dispositivo "  (i+1)  " ligado com bateria extra. Energia restante: " + ((energiaDisponivel  bateriaExtra) - consumo));
         energiaDisponivel = 0;
         bateriaExtra -= (consumo - energiaDisponivel);
     } else {
-        console.log("Dispositivo " + (i+1) + " não pode ser ligado. Energia insuficiente.");
+        console.log("Dispositivo "  (i+1)  " não pode ser ligado. Energia insuficiente.");
     }
 }
 ```
